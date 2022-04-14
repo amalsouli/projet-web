@@ -1,0 +1,128 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px 10%;
+    background-color: #ffa2c6;
+  }
+  
+  p
+  {
+    font-family: "Montserrat", sans-serif;
+    text-decoration: none;
+    padding: 40px;  
+  }
+  .logo {
+    margin-right: auto;
+
+  }
+  
+  .nav__links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav__links a,
+  .cta,
+  .overlay__content a {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    color: #edf0f1;
+    text-decoration: none;
+  }
+  
+  .nav__links li {
+    padding: 0px 20px;
+  }
+  
+  .nav__links li a {
+    transition: all 0.3s ease 0s;
+  }
+  
+  .nav__links li a:hover {
+    color: #ff5797;
+  }
+  
+  .cta {
+    margin-left: 20px;
+    padding: 9px 25px;
+    background-color: rgb(168, 52, 91);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+  
+  .cta:hover {
+    background-color: rgba(219, 118, 140, 0.8);
+  }
+
+  body > table {background: url("aaa.jpg") ;}
+  body > table{
+      width: 80%;
+      
+  }
+  
+  table{
+      border-collapse: collapse;
+  }
+  table.list{
+      width:100%;
+      background-color: #dddddd;
+  }
+  
+  td, th {
+      border: 1px solid #03ad00;
+      text-align: left;
+      padding: 8px;
+  }
+  tr:nth-child(even),table.list thead>tr {
+      background-color: #dddddd;
+  }
+  
+  input[type=text], input[type=number] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+  }
+  
+  input[type=button]{
+      width: 30%;
+      background-color: rgb(142, 40, 142);
+      color: #000;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+  }
+  
+  form div.form-action-buttons{
+      text-align: right;
+  }
+  
+  a{
+      cursor: pointer;
+      text-decoration: underline;
+      color: #ee00d2;
+      margin-right: 4px;
+  }
+  
+  label.validation-error{
+      color:   rgb(216, 16, 16);
+      margin-left: 5px;
+  }
+  
+  .hide{
+      display:none;
+  }
