@@ -1,5 +1,5 @@
 <?php
-	include '../config.php';
+	include_once '../config.php';
 	include_once '../Model/Commande.php';
 	class CommandeC {
 		function afficherCommande(){
@@ -26,8 +26,8 @@
 			}
 		}
 		function ajouterCommande($Commande){
-			$sql="INSERT INTO commande (IdCommande, NomClient, PrenomClient, TypeProduit, PrixProduit, date) 
-			VALUES (:IdCommande, :NomClient, :PrenomClient, :TypeProduit, :PrixProduit, :date)";
+			$sql="INSERT INTO commande (IdCommande, NomClient, PrenomClient, TypeProduit, PrixProduit, QuantiteProduit, date) 
+			VALUES (:IdCommande, :NomClient, :PrenomClient, :TypeProduit, :PrixProduit, :QuantiteProduit, :date)";
 			$db = config::getConnexion();
 			try{ 
 			
@@ -38,6 +38,7 @@
 					':PrenomClient' => $Commande->getPrenomClient(),
 					':TypeProduit' => $Commande->getTypeProduit(),
 					':PrixProduit' => $Commande->getPrixProduit(),
+					':QuantiteProduit' => $Commande->getQuantiteProduit(),
 					':date' => $Commande->getdate()
 				]);			
 			}
@@ -46,7 +47,7 @@
 			}			
 		}
 		function recupererCommande($idCommande){
-			$sql="SELECT * from Commande where idCommande=$idCommande";
+			$sql="SELECT * from commande where idCommande=$idCommande";
 			$db = config::getConnexion();
 			try{
 				$query=$db->prepare($sql);
@@ -62,26 +63,29 @@
 		
 		function modifierCommande($Commande, $idCommande){
 			try {
+			
 				$db = config::getConnexion();
 				$query = $db->prepare(
-					'UPDATE commande SET 
+					"UPDATE commande SET 					    
 						NomClient= :NomClient, 
 						PrenomClient= :PrenomClient, 
 						TypeProduit= :TypeProduit, 
 						PrixProduit= :PrixProduit, 
+						QuantiteProduit= :QuantiteProduit,
 						date= :date
 						
-					WHERE IdCommande= :idCommande'
+					WHERE IdCommande= '$idCommande'"
 				);
-				$query->execute([
-					'NomClient' => $Commande->getNomClient(),
-					'PrenomClient' => $Commande->getPrenom(),
-					'TypeProduit' => $Commande->getTypeProduit(),
-					'PrixProduit' => $Commande->getPrixProduit(),
-					'Date' => $Commande->getDate(),
-					'idCommande' => $idCommande
+				$query->execute([					
+					':NomClient' => $Commande->getNomClient(),
+					':PrenomClient' => $Commande->getPrenomClient(),
+					':TypeProduit' => $Commande->getTypeProduit(),
+					':PrixProduit' => $Commande->getPrixProduit(),
+					':QuantiteProduit' => $Commande->getQuantiteProduit(),
+					':date' => $Commande->getDate(),					
 				]);
 				echo $query->rowCount() . " records UPDATED successfully <br>";
+				
 			} catch (PDOException $e) {
 				$e->getMessage();
 			}
